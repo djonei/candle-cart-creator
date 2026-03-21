@@ -38,13 +38,13 @@ const Hero = ({ cartCount, onCartClick }: HeroProps) => {
       {/* Logo with contrast overlay */}
       <div
         ref={ref}
-        className="scroll-reveal relative z-[1] flex flex-col items-center gap-4"
+        className="scroll-reveal relative z-[1] flex flex-col items-center gap-4 w-full"
       >
-        <div className="bg-warm-dark/50 backdrop-blur-sm rounded-2xl p-5 md:p-6">
+        <div className="bg-warm-dark/20 backdrop-blur-sm w-full py-6 md:py-8 flex justify-center">
           <img
             src={logoLumi}
             alt="Lümi Concept"
-            className="h-28 md:h-40 w-auto object-contain"
+            className="h-36 md:h-52 w-auto object-contain"
           />
         </div>
         <p className="font-body text-sm md:text-base text-warm-cream/90 text-center max-w-xs
