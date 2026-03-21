@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Catalog from "@/components/Catalog";
 import CartDrawer from "@/components/CartDrawer";
@@ -43,8 +42,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Header cartCount={totalItems} onCartClick={() => setCartOpen(true)} />
-      <Hero />
+      <Hero cartCount={totalItems} onCartClick={() => setCartOpen(true)} />
       <Catalog candles={candles} onAdd={handleAdd} />
       <Footer />
 

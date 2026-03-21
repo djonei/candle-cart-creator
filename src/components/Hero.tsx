@@ -1,26 +1,55 @@
 import heroBg from "@/assets/hero-bg.jpg";
+import logoLumi from "@/assets/logo-lumi.png";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
-const Hero = () => {
+interface HeroProps {
+  cartCount: number;
+  onCartClick: () => void;
+}
+
+const Hero = ({ cartCount, onCartClick }: HeroProps) => {
   const ref = useScrollReveal<HTMLDivElement>();
 
   return (
-    <section className="relative h-[50vh] md:h-[60vh] flex items-end overflow-hidden">
+    <section className="relative h-[35vh] md:h-[45vh] flex flex-col items-center justify-center overflow-hidden">
       <img
         src={heroBg}
         alt=""
         className="absolute inset-0 w-full h-full object-cover"
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
+
+      {/* Floating cart button */}
+      <button
+        onClick={onCartClick}
+        className="absolute top-4 right-4 z-10 font-body text-sm font-medium tracking-wide uppercase
+                   px-4 py-2 rounded-lg bg-warm-dark/60 backdrop-blur-sm text-warm-cream
+                   hover:bg-warm-dark/80 transition-colors duration-200 active:scale-[0.97]"
+      >
+        Pedido
+        {cartCount > 0 && (
+          <span className="absolute -top-1.5 -right-1.5 bg-accent text-accent-foreground
+                         text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center">
+            {cartCount}
+          </span>
+        )}
+      </button>
+
+      {/* Logo with contrast overlay */}
       <div
         ref={ref}
-        className="scroll-reveal relative container pb-8 md:pb-12"
+        className="scroll-reveal relative z-[1] flex flex-col items-center gap-4"
       >
-        <h1 className="font-display text-4xl md:text-6xl font-light text-warm-cream leading-[1.1] text-balance">
-          Ilumine seus <br className="hidden md:block" />momentos
-        </h1>
-        <p className="mt-3 font-body text-base md:text-lg text-muted-foreground max-w-md leading-relaxed">
-          Velas artesanais feitas com carinho para transformar cada ambiente em um refúgio.
+        <div className="bg-warm-dark/50 backdrop-blur-sm rounded-2xl p-5 md:p-6">
+          <img
+            src={logoLumi}
+            alt="Lümi Concept"
+            className="h-16 md:h-24 w-auto"
+          />
+        </div>
+        <p className="font-body text-sm md:text-base text-warm-cream/90 text-center max-w-xs
+                      drop-shadow-[0_1px_3px_rgba(0,0,0,0.5)]">
+          Velas artesanais feitas com carinho
         </p>
       </div>
     </section>
