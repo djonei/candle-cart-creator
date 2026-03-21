@@ -14,7 +14,7 @@ const CandleCard = ({ candle, onAdd }: CandleCardProps) => {
     <div
       ref={ref}
       className="scroll-reveal group bg-card rounded-lg overflow-hidden border border-border
-                 shadow-md shadow-warm-dark/20 hover:shadow-lg hover:shadow-warm-gold/10
+                 shadow-md shadow-black/5 hover:shadow-lg hover:shadow-black/10
                  transition-shadow duration-300"
     >
       <div className="aspect-square bg-muted overflow-hidden">
