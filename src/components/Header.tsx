@@ -12,7 +12,7 @@ const Header = ({ cartCount, onCartClick }: HeaderProps) => {
         <img
           src={logoLumi}
           alt="Lümi Concept"
-          className="h-10 md:h-14 w-auto"
+          className="h-16 md:h-20 w-auto object-contain"
         />
         <button
           onClick={onCartClick}

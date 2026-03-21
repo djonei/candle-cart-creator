@@ -44,7 +44,7 @@ const Hero = ({ cartCount, onCartClick }: HeroProps) => {
           <img
             src={logoLumi}
             alt="Lümi Concept"
-            className="h-16 md:h-24 w-auto"
+            className="h-28 md:h-40 w-auto object-contain"
           />
         </div>
         <p className="font-body text-sm md:text-base text-warm-cream/90 text-center max-w-xs
