@@ -1,16 +1,72 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useState } from "react";
+import Header from "@/components/Header";
+import Hero from "@/components/Hero";
+import Catalog from "@/components/Catalog";
+import CartDrawer from "@/components/CartDrawer";
+import CheckoutModal from "@/components/CheckoutModal";
+import Footer from "@/components/Footer";
+import { useCandles } from "@/hooks/useCandles";
+import { useCart } from "@/hooks/useCart";
+import { useOrders } from "@/hooks/useOrders";
+import { toast } from "sonner";
 
-// IMPORTANT: Fully REPLACE this with your own code
-const PlaceholderIndex = () => {
-  // PLACEHOLDER: Replace this entire return statement with the user's app.
-  // The inline background color is intentionally not part of the design system.
+const Index = () => {
+  const { candles } = useCandles();
+  const { cart, addToCart, updateQuantity, removeFromCart, clearCart, totalItems } = useCart();
+  const { createOrder } = useOrders();
+
+  const [cartOpen, setCartOpen] = useState(false);
+  const [checkoutOpen, setCheckoutOpen] = useState(false);
+
+  const handleAdd = (id: string) => {
+    addToCart(id);
+    toast.success("Adicionado ao pedido", {
+      description: candles.find((c) => c.id === id)?.name,
+      duration: 2000,
+    });
+  };
+
+  const handleCheckout = () => {
+    setCartOpen(false);
+    setCheckoutOpen(true);
+  };
+
+  const handleSubmitOrder = (name: string, phone: string, note: string) => {
+    createOrder(cart, name, phone, note);
+    clearCart();
+    setCheckoutOpen(false);
+    toast.success("Pedido enviado com sucesso!", {
+      description: `Obrigado, ${name}! Entraremos em contato pelo WhatsApp.`,
+      duration: 5000,
+    });
+  };
+
   return (
-    <div className="flex min-h-screen items-center justify-center" style={{ backgroundColor: '#fcfbf8' }}>
-      <img data-lovable-blank-page-placeholder="REMOVE_THIS" src="/placeholder.svg" alt="Your app will live here!" />
+    <div className="min-h-screen bg-background">
+      <Header cartCount={totalItems} onCartClick={() => setCartOpen(true)} />
+      <Hero />
+      <Catalog candles={candles} onAdd={handleAdd} />
+      <Footer />
+
+      <CartDrawer
+        open={cartOpen}
+        onClose={() => setCartOpen(false)}
+        cart={cart}
+        candles={candles}
+        onUpdateQuantity={updateQuantity}
+        onRemove={removeFromCart}
+        onCheckout={handleCheckout}
+      />
+
+      <CheckoutModal
+        open={checkoutOpen}
+        onClose={() => setCheckoutOpen(false)}
+        cart={cart}
+        candles={candles}
+        onSubmit={handleSubmitOrder}
+      />
     </div>
   );
 };
-
-const Index = PlaceholderIndex;
 
 export default Index;
