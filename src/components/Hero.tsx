@@ -40,16 +40,14 @@ const Hero = ({ cartCount, onCartClick }: HeroProps) => {
         ref={ref}
         className="scroll-reveal relative z-[1] flex flex-col items-center gap-4 w-full"
       >
-        <div className="bg-warm-dark/20 backdrop-blur-sm w-full py-6 md:py-8 flex justify-center">
-          <img
-            src={logoLumi}
-            alt="Lümi Concept"
-            className="h-36 md:h-52 w-auto object-contain"
-          />
-        </div>
-        <p className="font-body text-sm md:text-base text-warm-cream/90 text-center max-w-xs
+        <img
+          src={logoLumi}
+          alt="Lümi Concept"
+          className="h-36 md:h-52 w-auto object-contain"
+        />
+        <p className="font-body text-sm md:text-base text-warm-cream/90 text-center max-w-sm px-4
                       drop-shadow-[0_1px_3px_rgba(0,0,0,0.5)]">
-          Velas artesanais feitas com carinho
+          Velas artesanais feitas com carinho para transformar cada ambiente em um refúgio.
         </p>
       </div>
     </section>
