@@ -19,28 +19,28 @@ const Catalog = ({ candles, onAdd }: CatalogProps) => {
           <h2 className="font-display text-3xl md:text-4xl font-light text-foreground text-balance">
             Nossa coleção
           </h2>
-          <p className="font-body text-sm text-muted-foreground mt-2">
-            Selecione as velas e quantidades para montar seu pedido.
+          <p className="font-body text-sm text-muted-foreground mt-2">Selecione a vela e sem seguida poderá escolher a fragrância e pingente
+
           </p>
         </div>
 
-        {categories.map((cat) => (
-          <div key={cat} className="mb-10">
+        {categories.map((cat) =>
+        <div key={cat} className="mb-10">
             <h3 className="font-body text-xs tracking-[0.2em] uppercase text-muted-foreground mb-4 border-b border-border pb-2">
               {cat}
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-              {candles
-                .filter((c) => c.category === cat && c.available)
-                .map((candle) => (
-                  <CandleCard key={candle.id} candle={candle} onAdd={onAdd} />
-                ))}
+              {candles.
+            filter((c) => c.category === cat && c.available).
+            map((candle) =>
+            <CandleCard key={candle.id} candle={candle} onAdd={onAdd} />
+            )}
             </div>
           </div>
-        ))}
+        )}
       </div>
-    </section>
-  );
+    </section>);
+
 };
 
 export default Catalog;
