@@ -17,6 +17,7 @@ const Hero = ({ cartCount, onCartClick }: HeroProps) => {
         alt=""
         className="absolute inset-0 w-full h-full object-cover"
       />
+      <div className="absolute inset-0 bg-black/30" />
       <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
 
       {/* Floating cart button */}
